@@ -6,7 +6,6 @@
 [ext_resource type="Script" path="res://scripts/ui_logic/build_menu.gd" id="2_xdf3i"]
 [ext_resource type="Script" path="res://scripts/entity_manager.gd" id="3_uocvj"]
 [ext_resource type="AudioStream" uid="uid://cxo6ocf6t6l18" path="res://sounds/Click Sound Pack/Click1B.ogg" id="6_ey8w6"]
-[ext_resource type="AudioStream" uid="uid://rhf1cxavf3rl" path="res://sounds/Music/Goblins_Dance_(Battle).ogg" id="7_fh1u0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aljnk"]
 texture = ExtResource("1_7rgrb")
@@ -650,9 +649,6 @@ text = "READY"
 
 [node name="ClickPlayer" type="AudioStreamPlayer" parent="BuildUI/UIBlock/VBoxContainer/Ready"]
 stream = ExtResource("6_ey8w6")
-
-[node name="Gametrack" type="AudioStreamPlayer" parent="BuildUI/UIBlock/VBoxContainer/Ready"]
-stream = ExtResource("7_fh1u0")
 
 [node name="CapacityBorder" type="ColorRect" parent="BuildUI/UIBlock"]
 z_as_relative = false
