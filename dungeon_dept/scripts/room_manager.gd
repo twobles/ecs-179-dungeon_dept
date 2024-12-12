@@ -35,8 +35,10 @@ func _process(_delta: float) -> void:
 		active_room_index = (active_room_index + 1) % rooms.size()
 		change_room()
 
+
 func _play_battle_music() -> void:
 	Soundtrack.play_battle_music()
+
 
 func change_room() -> void:
 	if active_room != null:

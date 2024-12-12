@@ -77,7 +77,6 @@ func _on_ready_pressed() -> void:
 	ui_block.visible = false
 	emit_signal("battle_start")
 	battle_start_emitted = true
-	
 
 
 func _on_board_area_mouse_entered() -> void:
