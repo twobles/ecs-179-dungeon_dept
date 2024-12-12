@@ -1,7 +1,7 @@
 class_name StartMenu
 extends Control
 
-const GAME_SCENE = "res://scenes/main.tscn"
+const GAME_SCENE = "res://scenes/cutscene.tscn"
 
 @onready var click_player = $VBoxContainer/ClickPlayer
 
