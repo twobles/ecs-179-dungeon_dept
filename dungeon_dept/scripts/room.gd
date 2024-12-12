@@ -1,6 +1,8 @@
 class_name Room
 extends Node
 
+signal battle_end
+
 @export var connected_rooms: Array[Room] = []
 
 @onready var entity_manager = $EntityManager
@@ -28,3 +30,7 @@ func unpause() -> void:
 	entity_manager.process_mode = Node.PROCESS_MODE_INHERIT
 	build_ui.process_mode = Node.PROCESS_MODE_INHERIT
 	paused = false
+
+
+func _on_entity_manager_battle_end() -> void:
+	emit_signal("battle_end")

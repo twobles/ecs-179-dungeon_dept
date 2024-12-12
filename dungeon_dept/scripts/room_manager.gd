@@ -8,6 +8,11 @@ extends Node
 var active_room_index: int = 0
 
 
+func _ready() -> void:
+	for room in rooms:
+		room.connect("battle_end", change_next)
+
+
 func _process(_delta: float) -> void:
 	if active_room == null:
 		return
@@ -36,3 +41,15 @@ func clear_active() -> void:
 		active_room.visible = false
 		active_room.pause()
 		active_room = null
+		
+		
+func change_next() -> void:
+	if active_room == null:
+		return
+	
+	for i in range(rooms.size()):
+		for adj_room in active_room.connected_rooms:
+			if adj_room == rooms[i]:
+				active_room_index = i
+				
+	change_room()

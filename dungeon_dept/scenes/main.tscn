@@ -13,11 +13,13 @@ unique_name_in_owner = true
 script = ExtResource("1_hf87t")
 rooms = [NodePath("Room"), NodePath("Room2"), NodePath("Room3")]
 
-[node name="Room" parent="RoomManager" instance=ExtResource("2_ytdx5")]
+[node name="Room" parent="RoomManager" node_paths=PackedStringArray("connected_rooms") instance=ExtResource("2_ytdx5")]
 visible = false
+connected_rooms = [NodePath("../Room2")]
 
-[node name="Room2" parent="RoomManager" instance=ExtResource("2_ytdx5")]
+[node name="Room2" parent="RoomManager" node_paths=PackedStringArray("connected_rooms") instance=ExtResource("2_ytdx5")]
 visible = false
+connected_rooms = [NodePath("../Room3")]
 
 [node name="Room3" parent="RoomManager" instance=ExtResource("2_ytdx5")]
 visible = false

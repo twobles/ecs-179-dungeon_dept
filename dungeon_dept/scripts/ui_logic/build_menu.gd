@@ -93,19 +93,19 @@ func _on_board_area_mouse_exited() -> void:
 	mouse_pos_valid = false
 	
 
-func _on_area_2d_area_entered(area: Area2D) -> void:
+func _on_area_2d_area_entered(_area: Area2D) -> void:
 	icon_pos_valid = false
 
 
-func _on_area_2d_area_exited(area: Area2D) -> void:
+func _on_area_2d_area_exited(_area: Area2D) -> void:
 	icon_pos_valid = true
 	
 
-func _on_placed_area_entered(area: Area2D) -> void:
+func _on_placed_area_entered(_area: Area2D) -> void:
 	print("invalid")
 	
 	
-func _on_placed_area_exited(area: Area2D) -> void:
+func _on_placed_area_exited(_area: Area2D) -> void:
 	print("valid")
 	
 	

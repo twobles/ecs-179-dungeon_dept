@@ -5,6 +5,10 @@ extends Control
 @onready var click_player = $ClickPlayer
 @onready var money_indicator = $Money
 @onready var quota_indicator = $Quota
+@onready var button1 = $Button
+@onready var button2 = $Button2
+@onready var button3 = $Button3
+
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("toggle_map"):

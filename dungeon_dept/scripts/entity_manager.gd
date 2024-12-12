@@ -1,15 +1,21 @@
 class_name EntityManager
 extends Node
 
+signal battle_end
+
 @export var capacity: int = 100
 
 @onready var capacity_indicator: Label = %Capacity
 
 var monsters: Array[Monster] = []
+var battling: bool = false
 
 
 func _process(_delta: float) -> void:
 	capacity_indicator.text = "CAPACITY: " + str(capacity)
+	
+	if battling and monsters.is_empty():
+		emit_signal("battle_end")
 	
 
 func _physics_process(_delta: float) -> void:
@@ -26,3 +32,4 @@ func deduct_capacity(cost: int) -> bool:
 func _on_build_ui_battle_start() -> void:
 	for monster in monsters:
 		monster.process_mode = Node.PROCESS_MODE_INHERIT
+	battling = true
