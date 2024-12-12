@@ -214,7 +214,7 @@ shape = SubResource("CircleShape2D_je2qm")
 [node name="Cooldown" type="Timer" parent="."]
 
 [node name="SkeletonBehavior" parent="." node_paths=PackedStringArray("blackboard", "actor") instance=ExtResource("5_36vcm")]
-blackboard = NodePath("@Node@103026")
+blackboard = NodePath("@Node@111080")
 actor = NodePath("..")
 
 [connection signal="CharacterDirectionChange" from="." to="Sprite2D" method="_on_golem_character_direction_change"]

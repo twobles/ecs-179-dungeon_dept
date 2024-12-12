@@ -213,9 +213,8 @@ shape = SubResource("CircleShape2D_718ox")
 
 [node name="Cooldown" type="Timer" parent="."]
 
-[node name="SkeletonBehavior" parent="." node_paths=PackedStringArray("blackboard", "actor") instance=ExtResource("5_tbjfi")]
+[node name="SkeletonBehavior" parent="." node_paths=PackedStringArray("blackboard") instance=ExtResource("5_tbjfi")]
 blackboard = NodePath("@Node@105250")
-actor = NodePath("")
 
 [connection signal="area_entered" from="Senses" to="Senses" method="_on_area_entered"]
 [connection signal="area_exited" from="Senses" to="Senses" method="_on_area_exited"]
