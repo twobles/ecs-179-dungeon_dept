@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://bj4gxxv5tv7qc"]
+
+[ext_resource type="Script" path="res://scripts/monsters/skeleton.gd" id="1_lnhg7"]
+[ext_resource type="Texture2D" uid="uid://dkc20gqpjb23s" path="res://assets/skeleton.png" id="1_v8sem"]
+[ext_resource type="Script" path="res://scripts/entity/hurtbox.gd" id="2_5qrep"]
+[ext_resource type="Script" path="res://scripts/entity/hitbox.gd" id="3_kqa0r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ehvcr"]
+size = Vector2(140, 262)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e0se8"]
+radius = 14.1421
+height = 137.179
+
+[node name="Skeleton" type="CharacterBody2D"]
+scale = Vector2(0.35, 0.35)
+script = ExtResource("1_lnhg7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 2)
+shape = SubResource("RectangleShape2D_ehvcr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_v8sem")
+
+[node name="HurtBox" type="Area2D" parent="."]
+script = ExtResource("2_5qrep")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(1, 2)
+shape = SubResource("RectangleShape2D_ehvcr")
+
+[node name="HitBox" type="Area2D" parent="."]
+script = ExtResource("3_kqa0r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(-75, 30)
+rotation = 0.785397
+shape = SubResource("CapsuleShape2D_e0se8")
+disabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

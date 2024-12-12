@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://yeyfdxuc312v"]
+
+[ext_resource type="Script" path="res://scripts/room_manager.gd" id="1_hf87t"]
+[ext_resource type="PackedScene" uid="uid://dih1x2vtk8ln4" path="res://scenes/map.tscn" id="2_oplcp"]
+[ext_resource type="PackedScene" uid="uid://c8psmhlufab5k" path="res://scenes/room.tscn" id="2_ytdx5"]
+
+[node name="Game" type="Node"]
+
+[node name="Map" parent="." instance=ExtResource("2_oplcp")]
+
+[node name="RoomManager" type="Node" parent="." node_paths=PackedStringArray("rooms")]
+unique_name_in_owner = true
+script = ExtResource("1_hf87t")
+rooms = [NodePath("Room"), NodePath("Room2"), NodePath("Room3")]
+
+[node name="Room" parent="RoomManager" node_paths=PackedStringArray("connected_rooms") instance=ExtResource("2_ytdx5")]
+connected_rooms = [NodePath("../Room2")]
+
+[node name="Room2" parent="RoomManager" node_paths=PackedStringArray("connected_rooms") instance=ExtResource("2_ytdx5")]
+connected_rooms = [NodePath("../Room3")]
+
+[node name="Room3" parent="RoomManager" instance=ExtResource("2_ytdx5")]
