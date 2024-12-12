@@ -13,7 +13,7 @@ var shots = [
 var shots_text = [
 	"It's another beautiful day of work at the Department of Dungeon Design! Here at the Department of Dungeon Design, we specialize in providing our clients with custom dungeons full of monsters to slay adventurers and protect their treasure!",
 	"Each employee is tasked with earning money toward their daily quota at set rates for hurting adventurers, killing adventurers, and performing total party kills. However, if an adventuring party reaches the end of a dungeon and collects the client's treasure, a portion of money is taken OUT of your quota.",
-	"If you meet your quotas and prove yourself a good employee, who knows?\nYou could rise up the ranks and become a Big Boss Executive Guy, the most prestigious role and highest level of achievement in the land.",
+	"If you meet your quotas and prove yourself a good employee, who knows?\nYou could rise up the ranks and become a BIG BOSS EXECUTIVE GUY, the most prestigious role and highest level of achievement in the land.",
 	"Fail to hit your quotas... and you get kicked from our fine company.\n\nGood luck!",
 ]
 var current_shot: int = 0
