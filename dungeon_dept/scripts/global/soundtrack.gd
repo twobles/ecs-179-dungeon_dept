@@ -2,6 +2,7 @@ extends Node
 
 @onready var menu_soundtrack: AudioStreamPlayer = AudioStreamPlayer.new()
 @onready var battle_soundtrack: AudioStreamPlayer = AudioStreamPlayer.new()
+var signal_count: int = 0
 
 func _ready() -> void:
 	add_child(menu_soundtrack)

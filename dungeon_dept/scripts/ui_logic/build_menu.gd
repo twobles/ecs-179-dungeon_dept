@@ -73,10 +73,12 @@ func _process(_delta: float) -> void:
 
 
 func _on_ready_pressed() -> void:
-	Soundtrack.stop_menu_music()
-	Soundtrack.play_battle_music()
+	click_player.play()
 	ui_block.visible = false
 	emit_signal("battle_start")
+	Soundtrack.signal_count += 1
+	if Soundtrack.signal_count == 3:
+		Soundtrack.play_battle_music()
 
 
 func _on_board_area_mouse_entered() -> void:
