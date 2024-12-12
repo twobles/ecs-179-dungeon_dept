@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://teb00pvy8m6a"]
+[gd_scene load_steps=5 format=3 uid="uid://teb00pvy8m6a"]
 
 [ext_resource type="Script" path="res://scripts/ui_logic/start_menu.gd" id="1_ad1o6"]
 [ext_resource type="FontFile" uid="uid://ni4di2byl52v" path="res://assets/fonts/DUNGRG__.TTF" id="1_y73cj"]
+[ext_resource type="AudioStream" uid="uid://cxo6ocf6t6l18" path="res://sounds/Click Sound Pack/Click1B.ogg" id="3_4b4c0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0gwkn"]
 bg_color = Color(0.129412, 0.14902, 0.180392, 1)
@@ -59,6 +60,9 @@ offset_bottom = 220.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 9
+
+[node name="ClickPlayer" type="AudioStreamPlayer" parent="VBoxContainer"]
+stream = ExtResource("3_4b4c0")
 
 [node name="Play" type="Button" parent="VBoxContainer"]
 layout_mode = 2

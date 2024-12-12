@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=4 uid="uid://c8psmhlufab5k"]
+[gd_scene load_steps=10 format=4 uid="uid://c8psmhlufab5k"]
 
 [ext_resource type="Texture2D" uid="uid://cv1tyxj5klge4" path="res://assets/Dungeon_Tileset_Resize32x32.png" id="1_7rgrb"]
 [ext_resource type="Script" path="res://scripts/room.gd" id="1_apaen"]
 [ext_resource type="FontFile" uid="uid://ni4di2byl52v" path="res://assets/fonts/DUNGRG__.TTF" id="2_1f6rj"]
 [ext_resource type="Script" path="res://scripts/ui_logic/build_menu.gd" id="2_xdf3i"]
 [ext_resource type="Script" path="res://scripts/entity_manager.gd" id="3_uocvj"]
+[ext_resource type="AudioStream" uid="uid://cxo6ocf6t6l18" path="res://sounds/Click Sound Pack/Click1B.ogg" id="6_ey8w6"]
+[ext_resource type="AudioStream" uid="uid://rhf1cxavf3rl" path="res://sounds/Music/Goblins_Dance_(Battle).ogg" id="7_fh1u0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aljnk"]
 texture = ExtResource("1_7rgrb")
@@ -642,6 +644,12 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("2_1f6rj")
 theme_override_font_sizes/font_size = 35
 text = "READY"
+
+[node name="ClickPlayer" type="AudioStreamPlayer" parent="BuildUI/UIBlock/VBoxContainer/Ready"]
+stream = ExtResource("6_ey8w6")
+
+[node name="Gametrack" type="AudioStreamPlayer" parent="BuildUI/UIBlock/VBoxContainer/Ready"]
+stream = ExtResource("7_fh1u0")
 
 [node name="CapacityBorder" type="ColorRect" parent="BuildUI/UIBlock"]
 z_as_relative = false

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://db0hwkr353468"
+path="res://.godot/imported/Ki-lick1A.ogg-69eca248e454e4d7f03378bb21741623.oggvorbisstr"
+
+[deps]
+
+source_file="res://sounds/Click Sound Pack/Ki-lick1A.ogg"
+dest_files=["res://.godot/imported/Ki-lick1A.ogg-69eca248e454e4d7f03378bb21741623.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

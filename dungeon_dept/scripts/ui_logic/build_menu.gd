@@ -8,6 +8,8 @@ signal battle_start
 @onready var entity_manager = %EntityManager
 @onready var monster_factory: MonsterFactory = MonsterFactory.new()
 @onready var adventurer_factory: AdventurerFactory = AdventurerFactory.new()
+@onready var click_player = $UIBlock/VBoxContainer/Ready/ClickPlayer
+@onready var game_track = $UIBlock/VBoxContainer/Ready/Gametrack
 
 var curr_monster_icon: Sprite2D
 var curr_monster_instance: Monster
@@ -70,6 +72,9 @@ func _process(_delta: float) -> void:
 
 
 func _on_ready_pressed() -> void:
+	Soundtrack.stop_music()
+	click_player.play()
+	game_track.play()
 	ui_block.visible = false
 	emit_signal("battle_start")
 

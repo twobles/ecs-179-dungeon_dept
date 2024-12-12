@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dih1x2vtk8ln4"]
+[gd_scene load_steps=3 format=3 uid="uid://dih1x2vtk8ln4"]
 
 [ext_resource type="Script" path="res://scripts/map.gd" id="1_p27s1"]
+[ext_resource type="AudioStream" uid="uid://cxo6ocf6t6l18" path="res://sounds/Click Sound Pack/Click1B.ogg" id="2_8htlu"]
 
 [node name="Map" type="Control"]
 layout_mode = 3
@@ -12,6 +13,9 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_p27s1")
+
+[node name="ClickPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_8htlu")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -81,6 +85,7 @@ offset_bottom = 72.0
 color = Color(0.0923971, 0.0923971, 0.0923971, 1)
 
 [node name="Connector2" type="ColorRect" parent="."]
+layout_mode = 0
 offset_left = -8.0
 offset_top = -72.0
 offset_right = 9.0
