@@ -1,16 +1,27 @@
 extends Node
 
-@onready var audio_player: AudioStreamPlayer = AudioStreamPlayer.new()
+@onready var menu_soundtrack: AudioStreamPlayer = AudioStreamPlayer.new()
+@onready var battle_soundtrack: AudioStreamPlayer = AudioStreamPlayer.new()
 
 func _ready() -> void:
-	add_child(audio_player)
-	audio_player.stream = preload("res://sounds/Music/Goblins_Den_(Regular).ogg")   
-	audio_player.play()
+	add_child(menu_soundtrack)
+	menu_soundtrack.stream = preload("res://sounds/Music/Goblins_Den_(Regular).ogg")   
+	menu_soundtrack.play()
 
-func stop_music() -> void:
-	if audio_player.playing:
-		audio_player.stop()
+func play_battle_music() -> void:
+	stop_menu_music()
+	add_child(battle_soundtrack)
+	battle_soundtrack.stream = preload("res://sounds/Music/Goblins_Dance_(Battle).ogg")
+	battle_soundtrack.play()
+	
+func stop_menu_music() -> void:
+	if menu_soundtrack.playing:
+		menu_soundtrack.stop()
 
-func play_music() -> void:
-	if not audio_player.playing:
-		audio_player.play()
+func play_menu_music() -> void:
+	if not menu_soundtrack.playing:
+		menu_soundtrack.play()
+		
+func stop_battle_music() -> void:
+	if battle_soundtrack.playing:
+		battle_soundtrack.stop()
