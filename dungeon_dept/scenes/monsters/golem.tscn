@@ -186,7 +186,6 @@ unflipped_position = Vector2(160, -75)
 flipped_position = Vector2(-135, -75)
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-debug_enabled = true
 
 [node name="calcTimer" type="Timer" parent="."]
 autostart = true
@@ -214,7 +213,7 @@ shape = SubResource("CircleShape2D_je2qm")
 [node name="Cooldown" type="Timer" parent="."]
 
 [node name="SkeletonBehavior" parent="." node_paths=PackedStringArray("blackboard", "actor") instance=ExtResource("5_36vcm")]
-blackboard = NodePath("@Node@111080")
+blackboard = NodePath("@Node@19881")
 actor = NodePath("..")
 
 [connection signal="CharacterDirectionChange" from="." to="Sprite2D" method="_on_golem_character_direction_change"]

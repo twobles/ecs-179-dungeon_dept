@@ -183,7 +183,6 @@ unflipped_position = Vector2(160, -75)
 flipped_position = Vector2(-135, -75)
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-debug_enabled = true
 
 [node name="calcTimer" type="Timer" parent="."]
 autostart = true
@@ -211,8 +210,8 @@ shape = SubResource("CircleShape2D_ajwg1")
 [node name="Cooldown" type="Timer" parent="."]
 
 [node name="SkeletonBehavior" parent="." node_paths=PackedStringArray("blackboard", "actor") instance=ExtResource("5_8ti6n")]
-blackboard = NodePath("@Node@116947")
-actor = NodePath("")
+blackboard = NodePath("@Node@18065")
+actor = NodePath("..")
 
 [connection signal="area_entered" from="Senses" to="Senses" method="_on_area_entered"]
 [connection signal="area_exited" from="Senses" to="Senses" method="_on_area_exited"]
