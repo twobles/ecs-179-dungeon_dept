@@ -11,7 +11,6 @@ signal battle_end
 
 var paused = true
 
-
 func _ready() -> void:
 	if not active_room:
 		self.visible = false
@@ -19,7 +18,9 @@ func _ready() -> void:
 	else:
 		return
 			
-	
+func room_is_ready() -> bool:
+	return build_ui.battle_start_emitted
+		
 func pause() -> void:
 	entity_manager.process_mode = Node.PROCESS_MODE_DISABLED
 	build_ui.process_mode = Node.PROCESS_MODE_DISABLED
