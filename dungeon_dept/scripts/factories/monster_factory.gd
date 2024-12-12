@@ -24,4 +24,5 @@ func spawn(monster_type: MonsterType, pos: Vector2 = Vector2(0.0, 0.0)) -> Monst
 		monster_instance.position = pos
 		return monster_instance as Monster
 	else:
+		print("error")
 		return null

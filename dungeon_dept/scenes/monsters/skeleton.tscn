@@ -10,7 +10,7 @@ size = Vector2(140, 262)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e0se8"]
 radius = 14.1421
-height = 137.179
+height = 150.513
 
 [node name="Skeleton" type="CharacterBody2D"]
 scale = Vector2(0.35, 0.35)
@@ -26,7 +26,7 @@ texture = ExtResource("1_v8sem")
 [node name="HurtBox" type="Area2D" parent="."]
 script = ExtResource("2_5qrep")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="HurtBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 position = Vector2(1, 2)
 shape = SubResource("RectangleShape2D_ehvcr")
 
@@ -34,8 +34,8 @@ shape = SubResource("RectangleShape2D_ehvcr")
 script = ExtResource("3_kqa0r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(-75, 30)
-rotation = 0.785397
+position = Vector2(-125.714, 1.90735e-06)
+rotation = 1.57079
 shape = SubResource("CapsuleShape2D_e0se8")
 disabled = true
 
