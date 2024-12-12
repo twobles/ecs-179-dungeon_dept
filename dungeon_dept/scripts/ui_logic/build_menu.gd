@@ -24,7 +24,7 @@ var mouse_pos_valid: bool = false
 var icon_pos_valid: bool = true
 var selected: bool = false
 var holding: bool = false
-
+var battle_start_emitted: bool
 
 func _process(_delta: float) -> void:	
 	if holding:
@@ -76,9 +76,8 @@ func _on_ready_pressed() -> void:
 	click_player.play()
 	ui_block.visible = false
 	emit_signal("battle_start")
-	Soundtrack.signal_count += 1
-	if Soundtrack.signal_count == 3:
-		Soundtrack.play_battle_music()
+	battle_start_emitted = true
+	
 
 
 func _on_board_area_mouse_entered() -> void:
