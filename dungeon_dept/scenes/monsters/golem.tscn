@@ -1,16 +1,121 @@
-[gd_scene load_steps=7 format=3 uid="uid://b3c0t5v17bac"]
+[gd_scene load_steps=16 format=3 uid="uid://b3c0t5v17bac"]
 
 [ext_resource type="Script" path="res://scripts/monsters/golem.gd" id="1_73tv4"]
-[ext_resource type="Texture2D" uid="uid://od0klq5dvhm7" path="res://assets/golem.png" id="1_dxqjd"]
-[ext_resource type="Script" path="res://scripts/entity/hurtbox.gd" id="2_418je"]
-[ext_resource type="Script" path="res://scripts/entity/hitbox.gd" id="3_5uitx"]
+[ext_resource type="Texture2D" uid="uid://dfhgqvxno11qu" path="res://assets/golem_sprite_test.png" id="2_gdi82"]
+[ext_resource type="Script" path="res://scripts/entity/entity_facing.gd" id="3_bxa0m"]
+[ext_resource type="Script" path="res://scripts/entity/senses.gd" id="4_twdv6"]
+[ext_resource type="PackedScene" uid="uid://d26dsf0bldvuh" path="res://scenes/behavior_trees/skeletonBehavior.tscn" id="5_36vcm"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fhmt8"]
-size = Vector2(133, 160)
+[sub_resource type="Animation" id="Animation_nj4b8"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_68djy"]
-radius = 14.0
-height = 340.0
+[sub_resource type="Animation" id="Animation_kl8h4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HitBox/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ugt8b"]
+resource_name = "walking"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.166667, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_uh3k2"]
+resource_name = "attack"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.333333, 0.833333, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [3, 4, 5, 6]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HitBox/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.366667, 0.533333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fm68b"]
+_data = {
+"RESET": SubResource("Animation_kl8h4"),
+"attack": SubResource("Animation_uh3k2"),
+"idle": SubResource("Animation_nj4b8"),
+"walking": SubResource("Animation_ugt8b")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lm1hu"]
+radius = 16.25
+height = 37.5
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2c401"]
+size = Vector2(92.5, 150)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5s3e5"]
+size = Vector2(175, 178.125)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h50ju"]
+radius = 60.013
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_je2qm"]
+radius = 665.042
 
 [node name="Golem" type="CharacterBody2D"]
 scale = Vector2(0.8, 0.8)
@@ -18,28 +123,78 @@ collision_layer = 3
 collision_mask = 5
 script = ExtResource("1_73tv4")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(3.5, 1)
-shape = SubResource("RectangleShape2D_fhmt8")
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-21, -50)
-texture = ExtResource("1_dxqjd")
-
-[node name="HurtBox" type="Area2D" parent="."]
-script = ExtResource("2_418je")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-position = Vector2(3.5, 1)
-shape = SubResource("RectangleShape2D_fhmt8")
-
-[node name="HitBox" type="Area2D" parent="."]
-script = ExtResource("3_5uitx")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(8, 0)
-rotation = -1.5708
-shape = SubResource("CapsuleShape2D_68djy")
-disabled = true
+position = Vector2(-18, -130)
+scale = Vector2(1, 1)
+texture = ExtResource("2_gdi82")
+hframes = 3
+vframes = 3
+script = ExtResource("3_bxa0m")
+unflipped_position = Vector2(-18, -130)
+flipped_position = Vector2(53, -130)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_fm68b")
+}
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(12.5, -23.75)
+scale = Vector2(0.999999, 0.999999)
+shape = SubResource("CapsuleShape2D_lm1hu")
+
+[node name="HurtBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(15, -73.75)
+scale = Vector2(0.999999, 0.999999)
+shape = SubResource("RectangleShape2D_2c401")
+
+[node name="HitBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(-101.25, -75)
+scale = Vector2(0.999999, 0.999999)
+shape = SubResource("RectangleShape2D_5s3e5")
+script = ExtResource("3_bxa0m")
+unflipped_position = Vector2(160, -75)
+flipped_position = Vector2(-135, -75)
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+debug_enabled = true
+
+[node name="calcTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="spacer_radius" type="Area2D" parent="."]
+position = Vector2(0, -49)
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="spacer_radius"]
+position = Vector2(15, 11.5)
+shape = SubResource("CircleShape2D_h50ju")
+
+[node name="Spacer" type="Node2D" parent="."]
+position = Vector2(73, 47)
+
+[node name="Senses" type="Area2D" parent="."]
+position = Vector2(0, -47)
+script = ExtResource("4_twdv6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Senses"]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_je2qm")
+
+[node name="Cooldown" type="Timer" parent="."]
+
+[node name="SkeletonBehavior" parent="." node_paths=PackedStringArray("blackboard", "actor") instance=ExtResource("5_36vcm")]
+blackboard = NodePath("@Node@56374")
+actor = NodePath("")
+
+[connection signal="CharacterDirectionChange" from="." to="Sprite2D" method="_on_golem_character_direction_change"]
+[connection signal="CharacterDirectionChange" from="." to="HitBox/CollisionShape2D" method="_on_golem_character_direction_change"]
+[connection signal="area_entered" from="Senses" to="Senses" method="_on_area_entered"]
+[connection signal="area_exited" from="Senses" to="Senses" method="_on_area_exited"]
+[connection signal="body_entered" from="Senses" to="Senses" method="_on_body_entered"]
+[connection signal="body_exited" from="Senses" to="Senses" method="_on_body_exited"]

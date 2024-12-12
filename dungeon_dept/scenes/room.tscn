@@ -677,6 +677,7 @@ vertical_alignment = 1
 
 [node name="Invalid" type="ColorRect" parent="BuildUI/UIBlock"]
 process_mode = 4
+layout_mode = 0
 offset_left = 461.0
 offset_top = 464.0
 offset_right = 689.0

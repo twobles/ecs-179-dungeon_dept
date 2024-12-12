@@ -190,7 +190,7 @@ shape = SubResource("CircleShape2D_qqfqd")
 position = Vector2(73, 47)
 
 [node name="SkeletonBehavior" parent="." node_paths=PackedStringArray("blackboard", "actor") instance=ExtResource("3_b00pm")]
-blackboard = NodePath("@Node@17871")
+blackboard = NodePath("@Node@21035")
 actor = NodePath("..")
 
 [node name="Senses" type="Area2D" parent="."]
