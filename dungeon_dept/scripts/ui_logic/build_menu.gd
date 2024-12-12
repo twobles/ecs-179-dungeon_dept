@@ -27,9 +27,7 @@ var selected: bool = false
 var holding: bool = false
 
 
-func _process(_delta: float) -> void:
-	print(icon_pos_valid)
-	
+func _process(_delta: float) -> void:	
 	if holding:
 		curr_monster_icon.position = area.get_global_mouse_position()
 
@@ -66,10 +64,6 @@ func _process(_delta: float) -> void:
 		return
 
 	_remove_curr_icon()
-	#curr_monster_icon = Sprite2D.new()
-	#curr_monster_icon.texture = load(mon_table[monster_index].sprite_path)
-	#curr_monster_icon.scale = mon_table[monster_index].sprite_scale
-	#curr_monster_icon.position = area.get_global_mouse_position()
 	curr_monster_icon = monster_sprite_factory.spawn(
 				mon_table[monster_index].type, 
 				area.get_global_mouse_position()
@@ -99,13 +93,19 @@ func _on_board_area_mouse_exited() -> void:
 	
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	print("invalid")
 	icon_pos_valid = false
 
 
 func _on_area_2d_area_exited(area: Area2D) -> void:
-	print("valid")
 	icon_pos_valid = true
+	
+
+func _on_placed_area_entered(area: Area2D) -> void:
+	print("invalid")
+	
+	
+func _on_placed_area_exited(area: Area2D) -> void:
+	print("valid")
 
 
 func _remove_curr_icon() -> void:
@@ -115,7 +115,3 @@ func _remove_curr_icon() -> void:
 	curr_monster_icon = null
 	holding = false
 	selected = false
-
-
-func _on_area_2d_mouse_entered() -> void:
-	print("entered")

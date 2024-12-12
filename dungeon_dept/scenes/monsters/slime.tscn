@@ -9,6 +9,8 @@ size = Vector2(127, 248)
 
 [node name="Slime" type="CharacterBody2D"]
 scale = Vector2(0.35, 0.35)
+collision_layer = 3
+collision_mask = 5
 script = ExtResource("1_j0vjh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

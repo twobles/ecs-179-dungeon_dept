@@ -685,6 +685,7 @@ position = Vector2(576, 591)
 rotation = -1.57079
 shape = SubResource("RectangleShape2D_jcsgq")
 
+[connection signal="battle_start" from="BuildUI" to="EntityManager" method="_on_build_ui_battle_start"]
 [connection signal="mouse_entered" from="BuildUI/UIBlock/BoardArea" to="BuildUI" method="_on_board_area_mouse_entered"]
 [connection signal="mouse_exited" from="BuildUI/UIBlock/BoardArea" to="BuildUI" method="_on_board_area_mouse_exited"]
 [connection signal="pressed" from="BuildUI/UIBlock/VBoxContainer/Ready" to="BuildUI" method="_on_ready_pressed"]
