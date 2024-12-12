@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://c8psmhlufab5k"]
+[gd_scene load_steps=13 format=4 uid="uid://c8psmhlufab5k"]
 
 [ext_resource type="Texture2D" uid="uid://cv1tyxj5klge4" path="res://assets/Dungeon_Tileset_Resize32x32.png" id="1_7rgrb"]
 [ext_resource type="Script" path="res://scripts/room.gd" id="1_apaen"]
@@ -593,6 +593,11 @@ size = Vector2(226, 114)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jcsgq"]
 size = Vector2(24.5, 564.75)
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_mygq7"]
+vertices = PackedVector2Array(825.961, 72.9375, 824.031, 568.977, 329.047, 568.008, 331.938, 70.0469)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(322, 60, 836, 63, 834, 579, 319, 578)])
+
 [node name="Room" type="Node2D"]
 process_mode = 1
 script = ExtResource("1_apaen")
@@ -735,6 +740,9 @@ offset_bottom = 443.0
 color = Color(0.129412, 0.129412, 0.129412, 1)
 
 [node name="BattleUI" type="Node2D" parent="."]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_mygq7")
 
 [connection signal="battle_end" from="EntityManager" to="." method="_on_entity_manager_battle_end"]
 [connection signal="in_battle" from="EntityManager" to="." method="_on_entity_manager_in_battle"]

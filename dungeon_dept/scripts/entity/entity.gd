@@ -205,7 +205,7 @@ func _on_timer_timeout() -> void:
 	#_local_entities.erase(body)
 	
 func _manage_animation_tree_state() -> void:
-	print(animations.is_playing())
+	#print(animations.is_playing())
 	if attacking:
 		#nimation_tree["parameters/conditions/attack"] = true
 		#print("attack: ", attacking)

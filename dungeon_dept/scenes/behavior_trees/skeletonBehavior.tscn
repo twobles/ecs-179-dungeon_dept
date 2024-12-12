@@ -16,8 +16,8 @@
 
 [node name="SkeletonBehavior" type="Node2D" node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("1_c2tek")
-blackboard = NodePath("@Node@18288")
-actor = NodePath("..")
+blackboard = NodePath("@Node@82250")
+actor = NodePath("")
 
 [node name="SelectorReactiveComposite" type="Node" parent="."]
 script = ExtResource("2_fgiwo")

@@ -12,6 +12,7 @@ func _ready() -> void:
 	add_child(golem_sfx)
 	golem_sfx.stream = preload("res://sounds/SFX/golem_sfx.wav")
 	golem_sfx.play()
+	super()
 
 
 func _process(_delta: float) -> void:

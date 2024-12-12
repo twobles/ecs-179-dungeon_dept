@@ -12,6 +12,5 @@ func flip(facing: Entity.Facing) -> void:
 func _on_skeleton_character_direction_change(facing: Entity.Facing) -> void:
 	flip(facing)
 
-
 func _on_golem_character_direction_change(facing: Entity.Facing) -> void:
 	flip(facing)
