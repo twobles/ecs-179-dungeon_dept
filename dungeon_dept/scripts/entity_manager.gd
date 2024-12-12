@@ -2,6 +2,7 @@ class_name EntityManager
 extends Node
 
 signal battle_end
+signal in_battle
 
 @export var capacity: int = 100
 
@@ -33,3 +34,4 @@ func _on_build_ui_battle_start() -> void:
 	for monster in monsters:
 		monster.process_mode = Node.PROCESS_MODE_INHERIT
 	battling = true
+	emit_signal("in_battle")

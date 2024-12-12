@@ -1,6 +1,8 @@
 class_name RoomManager
 extends Node
 
+signal active_room_ready
+
 @export var rooms: Array[Room] = []
 @export var active_room: Room
 @export var debug: bool = true
@@ -12,6 +14,7 @@ var is_playing: bool = false
 func _ready() -> void:
 	for room in rooms:
 		room.connect("battle_end", change_next)
+		room.connect("in_battle", room_ready)
 
 
 func _process(_delta: float) -> void:
@@ -58,12 +61,17 @@ func clear_active() -> void:
 		
 		
 func change_next() -> void:
-	if active_room == null:
-		return
+	#if active_room == null:
+		#return
+	#
+	#for i in range(rooms.size()):
+		#for adj_room in active_room.connected_rooms:
+			#if adj_room == rooms[i]:
+				#active_room_index = i
+				#
+	#change_room()
+	pass
 	
-	for i in range(rooms.size()):
-		for adj_room in active_room.connected_rooms:
-			if adj_room == rooms[i]:
-				active_room_index = i
-				
-	change_room()
+	
+func room_ready() -> void:
+	emit_signal("active_room_ready")

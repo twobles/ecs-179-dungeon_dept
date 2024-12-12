@@ -2,6 +2,7 @@ class_name Room
 extends Node
 
 signal battle_end
+signal in_battle
 
 @export var connected_rooms: Array[Room] = []
 
@@ -38,3 +39,7 @@ func unpause() -> void:
 
 func _on_entity_manager_battle_end() -> void:
 	emit_signal("battle_end")
+
+
+func _on_entity_manager_in_battle() -> void:
+	emit_signal("in_battle")

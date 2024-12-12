@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://c8psmhlufab5k"]
+[gd_scene load_steps=12 format=4 uid="uid://c8psmhlufab5k"]
 
 [ext_resource type="Texture2D" uid="uid://cv1tyxj5klge4" path="res://assets/Dungeon_Tileset_Resize32x32.png" id="1_7rgrb"]
 [ext_resource type="Script" path="res://scripts/room.gd" id="1_apaen"]
@@ -587,6 +587,9 @@ terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_aljnk")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_811ij"]
+size = Vector2(226, 114)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jcsgq"]
 size = Vector2(24.5, 564.75)
 
@@ -672,6 +675,27 @@ text = "SHIFT to reopen map"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Invalid" type="ColorRect" parent="BuildUI/UIBlock"]
+process_mode = 4
+offset_left = 461.0
+offset_top = 464.0
+offset_right = 689.0
+offset_bottom = 578.0
+color = Color(1, 0.235294, 0.258824, 0.101961)
+
+[node name="Area2D" type="Area2D" parent="BuildUI/UIBlock/Invalid"]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BuildUI/UIBlock/Invalid/Area2D"]
+position = Vector2(114, 57)
+shape = SubResource("RectangleShape2D_811ij")
+
+[node name="StickyNotes" type="Sprite2D" parent="BuildUI/UIBlock"]
+position = Vector2(640, 272)
+scale = Vector2(1.04259, 1.04259)
+texture = ExtResource("7_86ec3")
+
 [node name="Area2D" type="Area2D" parent="BuildUI"]
 collision_layer = 2
 collision_mask = 4
@@ -694,11 +718,6 @@ position = Vector2(576, 591)
 rotation = -1.57079
 shape = SubResource("RectangleShape2D_jcsgq")
 
-[node name="StickyNotes" type="Sprite2D" parent="BuildUI"]
-position = Vector2(640, 272)
-scale = Vector2(1.04259, 1.04259)
-texture = ExtResource("7_86ec3")
-
 [node name="Info" type="Control" parent="BuildUI"]
 visible = false
 layout_mode = 3
@@ -717,10 +736,13 @@ color = Color(0.129412, 0.129412, 0.129412, 1)
 [node name="BattleUI" type="Node2D" parent="."]
 
 [connection signal="battle_end" from="EntityManager" to="." method="_on_entity_manager_battle_end"]
+[connection signal="in_battle" from="EntityManager" to="." method="_on_entity_manager_in_battle"]
 [connection signal="battle_start" from="BuildUI" to="EntityManager" method="_on_build_ui_battle_start"]
 [connection signal="mouse_entered" from="BuildUI/UIBlock/BoardArea" to="BuildUI" method="_on_board_area_mouse_entered"]
 [connection signal="mouse_exited" from="BuildUI/UIBlock/BoardArea" to="BuildUI" method="_on_board_area_mouse_exited"]
 [connection signal="pressed" from="BuildUI/UIBlock/VBoxContainer/Ready" to="BuildUI" method="_on_ready_pressed"]
+[connection signal="area_entered" from="BuildUI/UIBlock/Invalid/Area2D" to="BuildUI" method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="BuildUI/UIBlock/Invalid/Area2D" to="BuildUI" method="_on_area_2d_area_exited"]
 [connection signal="area_entered" from="BuildUI/Area2D" to="BuildUI" method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="BuildUI/Area2D" to="BuildUI" method="_on_area_2d_area_exited"]
 [connection signal="mouse_entered" from="BuildUI/Area2D" to="BuildUI" method="_on_area_2d_mouse_entered"]
