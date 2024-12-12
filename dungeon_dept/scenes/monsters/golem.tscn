@@ -32,10 +32,22 @@ tracks/1/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_uh3k2"]
 resource_name = "attack"
-length = 1.5
+length = 1.75
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -44,10 +56,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.333333, 0.833333, 1.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.333333, 0.833333),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [3, 4, 5, 6]
+"values": [3, 4, 5]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -61,9 +73,22 @@ tracks/1/keys = {
 "update": 1,
 "values": [true, false, true]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.366667, 0.633333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-40, 0), Vector2(0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_nj4b8"]
 resource_name = "idle"
+length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -79,6 +104,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_ugt8b"]
 resource_name = "walking"
+length = 0.8
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -87,10 +113,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.166667, 0.6),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0.0333334, 0.433333, 0.633333),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [1, 2]
+"values": [0, 1, 2]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fm68b"]
@@ -109,7 +135,7 @@ height = 37.5
 size = Vector2(92.5, 150)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5s3e5"]
-size = Vector2(175, 178.125)
+size = Vector2(193.75, 178.125)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h50ju"]
 radius = 60.013
@@ -152,7 +178,7 @@ shape = SubResource("RectangleShape2D_2c401")
 [node name="HitBox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(-101.25, -75)
+position = Vector2(-110.625, -75)
 scale = Vector2(0.999999, 0.999999)
 shape = SubResource("RectangleShape2D_5s3e5")
 script = ExtResource("3_bxa0m")
@@ -188,10 +214,11 @@ shape = SubResource("CircleShape2D_je2qm")
 [node name="Cooldown" type="Timer" parent="."]
 
 [node name="SkeletonBehavior" parent="." node_paths=PackedStringArray("blackboard", "actor") instance=ExtResource("5_36vcm")]
-blackboard = NodePath("@Node@90483")
+blackboard = NodePath("@Node@103026")
 actor = NodePath("..")
 
 [connection signal="CharacterDirectionChange" from="." to="Sprite2D" method="_on_golem_character_direction_change"]
+[connection signal="CharacterDirectionChange" from="." to="AnimationPlayer" method="_on_golem_character_direction_change"]
 [connection signal="CharacterDirectionChange" from="." to="HitBox/CollisionShape2D" method="_on_golem_character_direction_change"]
 [connection signal="area_entered" from="Senses" to="Senses" method="_on_area_entered"]
 [connection signal="area_exited" from="Senses" to="Senses" method="_on_area_exited"]
