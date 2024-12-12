@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://c8psmhlufab5k"]
+[gd_scene load_steps=9 format=4 uid="uid://c8psmhlufab5k"]
 
 [ext_resource type="Texture2D" uid="uid://cv1tyxj5klge4" path="res://assets/Dungeon_Tileset_Resize32x32.png" id="1_7rgrb"]
 [ext_resource type="Script" path="res://scripts/room.gd" id="1_apaen"]
@@ -585,6 +585,9 @@ terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_aljnk")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jcsgq"]
+size = Vector2(24.5, 564.75)
+
 [node name="Room" type="Node2D"]
 process_mode = 1
 script = ExtResource("1_apaen")
@@ -652,7 +655,32 @@ offset_right = 248.0
 offset_bottom = 539.0
 color = Color(0.129412, 0.129412, 0.129412, 1)
 
+[node name="Area2D" type="Area2D" parent="BuildUI"]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BuildUI/Area2D"]
+position = Vector2(304, 321)
+shape = SubResource("RectangleShape2D_jcsgq")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="BuildUI/Area2D"]
+position = Vector2(847.75, 318)
+shape = SubResource("RectangleShape2D_jcsgq")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="BuildUI/Area2D"]
+position = Vector2(577, 48)
+rotation = -1.57079
+shape = SubResource("RectangleShape2D_jcsgq")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="BuildUI/Area2D"]
+position = Vector2(576, 591)
+rotation = -1.57079
+shape = SubResource("RectangleShape2D_jcsgq")
+
 [connection signal="battle_start" from="BuildUI" to="EntityManager" method="_on_build_ui_battle_start"]
 [connection signal="mouse_entered" from="BuildUI/UIBlock/BoardArea" to="BuildUI" method="_on_board_area_mouse_entered"]
 [connection signal="mouse_exited" from="BuildUI/UIBlock/BoardArea" to="BuildUI" method="_on_board_area_mouse_exited"]
 [connection signal="pressed" from="BuildUI/UIBlock/VBoxContainer/Ready" to="BuildUI" method="_on_ready_pressed"]
+[connection signal="area_entered" from="BuildUI/Area2D" to="BuildUI" method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="BuildUI/Area2D" to="BuildUI" method="_on_area_2d_area_exited"]
+[connection signal="mouse_entered" from="BuildUI/Area2D" to="BuildUI" method="_on_area_2d_mouse_entered"]

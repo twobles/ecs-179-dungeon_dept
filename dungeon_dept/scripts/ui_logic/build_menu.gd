@@ -6,8 +6,8 @@ signal battle_start
 @onready var ui_block = $UIBlock
 @onready var area = $UIBlock/BoardArea
 @onready var entity_manager = %EntityManager
-@onready var monster_factory: MonsterFactory = MonsterFactory.new()
-@onready var adventurer_factory: AdventurerFactory = AdventurerFactory.new()
+@onready var monster_factory := MonsterFactory.new()
+@onready var monster_sprite_factory := MonsterSpriteFactory.new()
 
 var curr_monster_icon: Sprite2D
 var curr_monster_instance: Monster
@@ -20,18 +20,21 @@ var mon_table = {
 
 var monster_index: int
 var mouse_pos_valid: bool = false
+var icon_pos_valid: bool = true
 var selected: bool = false
 var holding: bool = false
 
 
 func _process(_delta: float) -> void:
+	print(icon_pos_valid)
+	
 	if holding:
 		curr_monster_icon.position = area.get_global_mouse_position()
 
 	if not mouse_pos_valid:
 		return
-
-	if Input.is_action_just_pressed("place") and holding:
+	
+	if Input.is_action_just_pressed("place") and holding and icon_pos_valid:
 		if (entity_manager.deduct_capacity(mon_table[monster_index].cost)):
 			curr_monster_instance = monster_factory.spawn(
 					mon_table[monster_index].type, 
@@ -61,10 +64,14 @@ func _process(_delta: float) -> void:
 		return
 
 	_remove_curr_icon()
-	curr_monster_icon = Sprite2D.new()
-	curr_monster_icon.texture = load(mon_table[monster_index].sprite_path)
-	curr_monster_icon.scale = mon_table[monster_index].sprite_scale
-	curr_monster_icon.position = area.get_global_mouse_position()
+	#curr_monster_icon = Sprite2D.new()
+	#curr_monster_icon.texture = load(mon_table[monster_index].sprite_path)
+	#curr_monster_icon.scale = mon_table[monster_index].sprite_scale
+	#curr_monster_icon.position = area.get_global_mouse_position()
+	curr_monster_icon = monster_sprite_factory.spawn(
+				mon_table[monster_index].type, 
+				area.get_global_mouse_position()
+	)
 	add_child(curr_monster_icon)
 	holding = true
 
@@ -75,11 +82,25 @@ func _on_ready_pressed() -> void:
 
 
 func _on_board_area_mouse_entered() -> void:
+	if curr_monster_icon != null:
+		curr_monster_icon.visible = true
 	mouse_pos_valid = true
 
 
 func _on_board_area_mouse_exited() -> void:
+	if curr_monster_icon != null:
+		curr_monster_icon.visible = false
 	mouse_pos_valid = false
+	
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	print("invalid")
+	icon_pos_valid = false
+
+
+func _on_area_2d_area_exited(area: Area2D) -> void:
+	print("valid")
+	icon_pos_valid = true
 
 
 func _remove_curr_icon() -> void:
@@ -89,3 +110,7 @@ func _remove_curr_icon() -> void:
 	curr_monster_icon = null
 	holding = false
 	selected = false
+
+
+func _on_area_2d_mouse_entered() -> void:
+	print("entered")
