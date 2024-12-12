@@ -14,7 +14,10 @@ script = ExtResource("1_hf87t")
 rooms = [NodePath("Room"), NodePath("Room2"), NodePath("Room3")]
 
 [node name="Room" parent="RoomManager" instance=ExtResource("2_ytdx5")]
+visible = false
 
 [node name="Room2" parent="RoomManager" instance=ExtResource("2_ytdx5")]
+visible = false
 
 [node name="Room3" parent="RoomManager" instance=ExtResource("2_ytdx5")]
+visible = false

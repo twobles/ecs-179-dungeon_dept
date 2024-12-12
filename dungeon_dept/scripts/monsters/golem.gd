@@ -8,10 +8,12 @@ func _init() -> void:
 	cost = 40
 	type = MonsterFactory.MonsterType.GOLEM
 	
+	
 func _ready() -> void:
 	add_child(golem_sfx)
 	golem_sfx.stream = preload("res://sounds/SFX/golem_sfx.wav")
 	golem_sfx.play()
+
 
 func _process(_delta: float) -> void:
 	pass

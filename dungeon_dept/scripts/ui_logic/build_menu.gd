@@ -40,6 +40,7 @@ func _process(_delta: float) -> void:
 					area.get_global_mouse_position()
 			)
 			curr_monster_instance.process_mode = Node.PROCESS_MODE_DISABLED
+			curr_monster_instance.connect("mouse_entered", _on_mouse_over_placed)
 			entity_manager.add_child(curr_monster_instance)
 			entity_manager.monsters.push_back(curr_monster_instance)
 		_remove_curr_icon()
@@ -104,6 +105,10 @@ func _on_placed_area_entered(area: Area2D) -> void:
 	
 func _on_placed_area_exited(area: Area2D) -> void:
 	print("valid")
+	
+	
+func _on_mouse_over_placed() -> void:
+	print("hovering")
 
 
 func _remove_curr_icon() -> void:

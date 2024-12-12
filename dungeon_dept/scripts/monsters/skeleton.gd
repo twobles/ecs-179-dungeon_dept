@@ -3,8 +3,10 @@ extends Monster
 
 @onready var skeleton_sfx: AudioStreamPlayer = AudioStreamPlayer.new()
 
+
 func _init() -> void:
 	pass
+	
 	
 func _ready() -> void:
 	add_child(skeleton_sfx)
