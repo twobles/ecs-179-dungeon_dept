@@ -661,6 +661,7 @@ offset_bottom = 539.0
 color = Color(0.129412, 0.129412, 0.129412, 1)
 
 [node name="Tip" type="Label" parent="BuildUI/UIBlock"]
+layout_mode = 0
 offset_left = 886.0
 offset_top = 554.0
 offset_right = 1133.0
@@ -708,6 +709,7 @@ offset_right = 249.0
 offset_bottom = 475.0
 
 [node name="InfoBackground" type="ColorRect" parent="BuildUI/Info"]
+layout_mode = 0
 offset_right = 202.0
 offset_bottom = 443.0
 color = Color(0.129412, 0.129412, 0.129412, 1)

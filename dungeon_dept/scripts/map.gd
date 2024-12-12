@@ -3,11 +3,16 @@ extends Control
 
 @onready var room_manager: RoomManager = %RoomManager
 @onready var click_player = $ClickPlayer
+@onready var money_indicator = $Money
+@onready var quota_indicator = $Quota
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("toggle_map"):
 		room_manager.clear_active()
 		self.visible = true
+		
+	money_indicator.text = "TOTAL: $" + str(money_engine.money)
+	quota_indicator.text = "QUOTA: $" + str(money_engine.quota)
 
 
 func _on_button_pressed() -> void:
