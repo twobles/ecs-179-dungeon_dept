@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://b350tl00c4f2w"]
 
-[ext_resource type="Script" path="res://scripts/knight.gd" id="1_s5a57"]
-[ext_resource type="Texture2D" uid="uid://e7wsys325ouf" path="res://assets/knight.png" id="2_gxehw"]
+[ext_resource type="Script" path="res://scripts/adventurers/knight.gd" id="1_s5a57"]
+[ext_resource type="Texture2D" uid="uid://fj2w6mmucmf6" path="res://assets/knight.png" id="2_gxehw"]
 
 [sub_resource type="Animation" id="Animation_mtxxx"]
 resource_name = "walking"
