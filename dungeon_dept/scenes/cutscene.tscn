@@ -1,0 +1,81 @@
+[gd_scene load_steps=6 format=3 uid="uid://c10dfaqjl6ceo"]
+
+[ext_resource type="Script" path="res://scripts/cutscene.gd" id="1_jt72c"]
+[ext_resource type="Texture2D" uid="uid://bcpqnd13n5vag" path="res://assets/cutscene_shots/shot1_exterior1.png" id="2_mwrug"]
+[ext_resource type="FontFile" uid="uid://ni4di2byl52v" path="res://assets/fonts/DUNGRG__.TTF" id="3_8tu1t"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ngdkc"]
+font = ExtResource("3_8tu1t")
+font_size = 25
+font_color = Color(0.281187, 0.281187, 0.281187, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_5m1pp"]
+line_spacing = 5.0
+font = ExtResource("3_8tu1t")
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+
+[node name="Cutscene" type="Node"]
+script = ExtResource("1_jt72c")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(576.934, 321.659)
+scale = Vector2(1.0072, 1.0072)
+texture = ExtResource("2_mwrug")
+
+[node name="DialogueBox" type="Control" parent="."]
+layout_mode = 3
+anchor_left = 0.008
+anchor_top = 0.722
+anchor_right = 0.008
+anchor_bottom = 0.722
+offset_left = -0.216001
+offset_top = -0.0800476
+offset_right = 1132.78
+offset_bottom = 170.92
+
+[node name="Label" type="Label" parent="DialogueBox"]
+z_index = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.861
+anchor_top = 0.819
+anchor_right = 0.861
+anchor_bottom = 0.819
+offset_left = 0.486938
+offset_top = -0.0490112
+offset_right = 203.487
+offset_bottom = 30.951
+text = "> Click to continue..."
+label_settings = SubResource("LabelSettings_ngdkc")
+
+[node name="Dialogue" type="Label" parent="DialogueBox"]
+z_index = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 11.825
+anchor_right = 0.5
+anchor_bottom = 11.825
+offset_left = -550.5
+offset_top = -2007.08
+offset_right = 550.5
+offset_bottom = -1868.08
+text = "Here at the Department of Dungeon Design, we specialize in providing our clients with custom dungeons full of monsters to slay adventurers and protect their treasure! 
+This is a third line of text!"
+label_settings = SubResource("LabelSettings_5m1pp")
+autowrap_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="DialogueBox"]
+visibility_layer = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 11.575
+anchor_right = 0.2
+anchor_bottom = 11.575
+offset_left = -227.6
+offset_top = -1978.33
+offset_right = 906.4
+offset_bottom = -1807.33
+color = Color(0.996078, 1, 0.905882, 0.901961)
