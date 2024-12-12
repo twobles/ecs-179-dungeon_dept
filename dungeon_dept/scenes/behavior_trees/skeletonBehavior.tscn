@@ -1,0 +1,74 @@
+[gd_scene load_steps=14 format=3 uid="uid://d26dsf0bldvuh"]
+
+[ext_resource type="Script" path="res://addons/beehave/nodes/beehave_tree.gd" id="1_c2tek"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/composites/selector_reactive.gd" id="2_fgiwo"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="3_u7oah"]
+[ext_resource type="Script" path="res://scripts/bh/bh_get_enemy.gd" id="4_20hyo"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/decorators/succeeder.gd" id="5_buxyd"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/composites/selector.gd" id="5_e5yna"]
+[ext_resource type="Script" path="res://scripts/bh/bh_set_target.gd" id="6_na3gu"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/decorators/time_limiter.gd" id="7_di3u3"]
+[ext_resource type="Script" path="res://scripts/bh/bh_face_target.gd" id="8_acpxo"]
+[ext_resource type="Script" path="res://scripts/bh/bh_check_melee_range.gd" id="8_r536m"]
+[ext_resource type="Script" path="res://scripts/bh/bh_attack.gd" id="9_422h6"]
+[ext_resource type="Script" path="res://scripts/bh/bh_start_navigation.gd" id="10_dtyni"]
+[ext_resource type="Script" path="res://scripts/bh/bh_wait_melee_range.gd" id="11_88r70"]
+
+[node name="SkeletonBehavior" type="Node2D" node_paths=PackedStringArray("blackboard", "actor")]
+script = ExtResource("1_c2tek")
+blackboard = NodePath("@Node@17267")
+actor = NodePath("")
+
+[node name="SelectorReactiveComposite" type="Node" parent="."]
+script = ExtResource("2_fgiwo")
+
+[node name="Combat" type="Node" parent="SelectorReactiveComposite"]
+script = ExtResource("3_u7oah")
+
+[node name="GetEnemy" type="Node" parent="SelectorReactiveComposite/Combat"]
+script = ExtResource("4_20hyo")
+
+[node name="AlwaysSucceedDecorator" type="Node" parent="SelectorReactiveComposite/Combat"]
+script = ExtResource("5_buxyd")
+
+[node name="SelectorComposite" type="Node" parent="SelectorReactiveComposite/Combat/AlwaysSucceedDecorator"]
+script = ExtResource("5_e5yna")
+
+[node name="InRange" type="Node" parent="SelectorReactiveComposite/Combat/AlwaysSucceedDecorator/SelectorComposite"]
+script = ExtResource("3_u7oah")
+
+[node name="SequenceComposite" type="Node" parent="SelectorReactiveComposite/Combat/AlwaysSucceedDecorator/SelectorComposite/InRange"]
+script = ExtResource("3_u7oah")
+
+[node name="CheckMeleeRange" type="Node" parent="SelectorReactiveComposite/Combat/AlwaysSucceedDecorator/SelectorComposite/InRange/SequenceComposite"]
+script = ExtResource("8_r536m")
+
+[node name="FaceTarget" type="Node" parent="SelectorReactiveComposite/Combat/AlwaysSucceedDecorator/SelectorComposite/InRange/SequenceComposite"]
+script = ExtResource("8_acpxo")
+
+[node name="Attack" type="Node" parent="SelectorReactiveComposite/Combat/AlwaysSucceedDecorator/SelectorComposite/InRange"]
+script = ExtResource("9_422h6")
+
+[node name="GoToEnemy" type="Node" parent="SelectorReactiveComposite/Combat/AlwaysSucceedDecorator/SelectorComposite"]
+script = ExtResource("3_u7oah")
+
+[node name="GetEnemy" type="Node" parent="SelectorReactiveComposite/Combat/AlwaysSucceedDecorator/SelectorComposite/GoToEnemy"]
+script = ExtResource("4_20hyo")
+
+[node name="SetTarget" type="Node" parent="SelectorReactiveComposite/Combat/AlwaysSucceedDecorator/SelectorComposite/GoToEnemy"]
+script = ExtResource("6_na3gu")
+
+[node name="StartNavigation" type="Node" parent="SelectorReactiveComposite/Combat/AlwaysSucceedDecorator/SelectorComposite/GoToEnemy"]
+script = ExtResource("10_dtyni")
+
+[node name="TimeLimiterDecorator" type="Node" parent="SelectorReactiveComposite/Combat/AlwaysSucceedDecorator/SelectorComposite/GoToEnemy"]
+script = ExtResource("7_di3u3")
+
+[node name="WaitMeleeRange" type="Node" parent="SelectorReactiveComposite/Combat/AlwaysSucceedDecorator/SelectorComposite/GoToEnemy/TimeLimiterDecorator"]
+script = ExtResource("11_88r70")
+
+[node name="TimeLimiterDecorator" type="Node" parent="SelectorReactiveComposite"]
+script = ExtResource("7_di3u3")
+
+[node name="WaitMeleeRange" type="Node" parent="SelectorReactiveComposite/TimeLimiterDecorator"]
+script = ExtResource("11_88r70")
