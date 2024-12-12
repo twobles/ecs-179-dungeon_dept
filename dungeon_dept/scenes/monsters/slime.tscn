@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://2a7ialugb4xq"]
+[gd_scene load_steps=5 format=3 uid="uid://2a7ialugb4xq"]
 
+[ext_resource type="Script" path="res://scripts/monsters/slime.gd" id="1_j0vjh"]
 [ext_resource type="Texture2D" uid="uid://clfj2mrqwnv4g" path="res://assets/slime.png" id="1_me5av"]
 [ext_resource type="Script" path="res://scripts/entity/hurtbox.gd" id="2_3ltu2"]
 
@@ -8,6 +9,7 @@ size = Vector2(127, 248)
 
 [node name="Slime" type="CharacterBody2D"]
 scale = Vector2(0.35, 0.35)
+script = ExtResource("1_j0vjh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-3, -2)

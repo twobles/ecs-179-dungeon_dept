@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://b3c0t5v17bac"]
+[gd_scene load_steps=7 format=3 uid="uid://b3c0t5v17bac"]
 
+[ext_resource type="Script" path="res://scripts/monsters/golem.gd" id="1_73tv4"]
 [ext_resource type="Texture2D" uid="uid://od0klq5dvhm7" path="res://assets/golem.png" id="1_dxqjd"]
 [ext_resource type="Script" path="res://scripts/entity/hurtbox.gd" id="2_418je"]
 [ext_resource type="Script" path="res://scripts/entity/hitbox.gd" id="3_5uitx"]
@@ -13,6 +14,7 @@ height = 340.0
 
 [node name="Golem" type="CharacterBody2D"]
 scale = Vector2(0.8, 0.8)
+script = ExtResource("1_73tv4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(3.5, 1)

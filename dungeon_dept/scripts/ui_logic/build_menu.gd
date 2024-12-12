@@ -32,7 +32,6 @@ func _process(_delta: float) -> void:
 		return
 
 	if Input.is_action_just_pressed("place") and holding:
-		_remove_curr_icon()
 		if (entity_manager.deduct_capacity(mon_table[monster_index].cost)):
 			curr_monster_instance = monster_factory.spawn(
 					mon_table[monster_index].type, 
@@ -41,6 +40,7 @@ func _process(_delta: float) -> void:
 			curr_monster_instance.process_mode = Node.PROCESS_MODE_DISABLED
 			entity_manager.add_child(curr_monster_instance)
 			entity_manager.monsters.push_back(curr_monster_instance)
+		_remove_curr_icon()
 
 	if Input.is_action_just_pressed("clear_select"):
 		_remove_curr_icon()
