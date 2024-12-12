@@ -4,8 +4,7 @@ extends Node
 
 func _ready() -> void:
 	add_child(audio_player)
-	audio_player.stream = preload("res://sounds/Music/Goblins_Den_(Regular).ogg")  # Replace with your soundtrack file
-	audio_player.volume_db = -5  # Adjust volume as needed
+	audio_player.stream = preload("res://sounds/Music/Goblins_Den_(Regular).ogg")   
 	audio_player.play()
 
 func stop_music() -> void:
