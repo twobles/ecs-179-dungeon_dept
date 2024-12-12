@@ -20,7 +20,7 @@ const DEFAULT_MOVE_VELOCITY: float = 3000.0
 
 @export var health: float = 100.0
 @export var damage: float = 1.0
-@export var type: AttackType
+@export var attack_type: AttackType
 
 @export var movement_speed: float = DEFAULT_MOVE_VELOCITY
 @export var target: Entity

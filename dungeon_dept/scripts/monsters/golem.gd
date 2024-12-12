@@ -3,7 +3,6 @@ extends Monster
 
 @onready var golem_sfx: AudioStreamPlayer = AudioStreamPlayer.new()
 
-
 func _init() -> void:
 	cost = 40
 	type = MonsterFactory.MonsterType.GOLEM
