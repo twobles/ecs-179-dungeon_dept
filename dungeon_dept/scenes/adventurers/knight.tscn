@@ -1,43 +1,54 @@
-[gd_scene load_steps=7 format=3 uid="uid://csbdvwausinsy"]
+[gd_scene load_steps=7 format=3 uid="uid://b350tl00c4f2w"]
 
-[ext_resource type="Script" path="res://scripts/adventurers/knight.gd" id="1_an3lt"]
-[ext_resource type="Texture2D" uid="uid://fj2w6mmucmf6" path="res://assets/knight.png" id="1_dmtcw"]
-[ext_resource type="Script" path="res://scripts/entity/hurtbox.gd" id="2_0n06p"]
-[ext_resource type="Script" path="res://scripts/entity/hitbox.gd" id="3_0hfce"]
+[ext_resource type="Script" path="res://scripts/knight.gd" id="1_s5a57"]
+[ext_resource type="Texture2D" uid="uid://e7wsys325ouf" path="res://assets/knight.png" id="2_gxehw"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1wjsa"]
-size = Vector2(47.5, 84)
+[sub_resource type="Animation" id="Animation_mtxxx"]
+resource_name = "walking"
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_luacn"]
-radius = 5.75466
-height = 59.1398
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_axkan"]
+_data = {
+"walking": SubResource("Animation_mtxxx")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_whq2n"]
+size = Vector2(51.4285, 72.4643)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qqfqd"]
+radius = 91.6788
 
 [node name="Knight" type="CharacterBody2D"]
-scale = Vector2(1.1, 1.1)
-script = ExtResource("1_an3lt")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2, 3)
-shape = SubResource("RectangleShape2D_1wjsa")
+position = Vector2(788, 300)
+scale = Vector2(0.35, 0.35)
+script = ExtResource("1_s5a57")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.35, 0.35)
-texture = ExtResource("1_dmtcw")
-
-[node name="HurtBox" type="Area2D" parent="."]
-script = ExtResource("2_0n06p")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-position = Vector2(-2, 3)
-shape = SubResource("RectangleShape2D_1wjsa")
-
-[node name="HitBox" type="Area2D" parent="."]
-script = ExtResource("3_0hfce")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(21.8182, -7.27273)
-rotation = 0.785398
-shape = SubResource("CapsuleShape2D_luacn")
-disabled = true
+position = Vector2(8.57143, -94.2857)
+texture = ExtResource("2_gxehw")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_axkan")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8.57145)
+scale = Vector2(0.999998, 0.999998)
+shape = SubResource("RectangleShape2D_whq2n")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+debug_enabled = true
+
+[node name="calcTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="SpacerRange" type="Area2D" parent="."]
+position = Vector2(-8.57136, -40)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpacerRange"]
+position = Vector2(11.4286, 34.2858)
+shape = SubResource("CircleShape2D_qqfqd")
+
+[node name="Spacer" type="Node2D" parent="."]
+position = Vector2(5.71429, 8.57143)

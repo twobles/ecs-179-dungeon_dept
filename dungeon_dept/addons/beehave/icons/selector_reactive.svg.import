@@ -2,16 +2,17 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ne0d6ac47o5v"
-path="res://.godot/imported/001.png-cfcb6602da095005c228e29c6eded550.ctex"
+uid="uid://crkbov0h8sb8l"
+path="res://.godot/imported/selector_reactive.svg-dd3b8fb8cd2ffe331605aaad1e021cc0.ctex"
 metadata={
+"has_editor_variant": true,
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/cutscene_shots/001.png"
-dest_files=["res://.godot/imported/001.png-cfcb6602da095005c228e29c6eded550.ctex"]
+source_file="res://addons/beehave/icons/selector_reactive.svg"
+dest_files=["res://.godot/imported/selector_reactive.svg-dd3b8fb8cd2ffe331605aaad1e021cc0.ctex"]
 
 [params]
 
@@ -32,3 +33,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=true
+editor/convert_colors_with_editor_theme=true

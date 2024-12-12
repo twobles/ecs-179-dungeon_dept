@@ -1,5 +1,15 @@
 class_name Monster
 extends Entity
 
-var cost: int = 20
-var type: MonsterFactory.MonsterType = MonsterFactory.MonsterType.SKELETON
+# cost to deploy
+@export var cost: float = 0.0
+
+var type: MonsterFactory.MonsterType
+
+func _ready() -> void:
+	cost = 100.0
+	#movement_speed = 4000.0
+	team = 1
+	facing = Facing.LEFT
+	super()
+	
